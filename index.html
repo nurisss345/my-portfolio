@@ -29,7 +29,7 @@
             background: rgba(0, 0, 0, 0.5);
             animation: fadeIn 1.5s ease-in-out;
         }
-        .about, .achievements {
+        .about {
             margin: 20px;
             padding: 20px;
             background: rgba(255, 255, 255, 0.1);
@@ -46,6 +46,13 @@
             display: block;
             margin: 0 auto 10px;
             border: 3px solid white;
+        }
+        .achievements {
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: inline-block;
         }
         ul {
             list-style-type: none;
@@ -68,78 +75,68 @@
             color: #ffcc00;
             transition: color 0.3s;
         }
+        .lang-btn {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
     </style>
     <script>
-        const translations = {
-            en: {
-                welcome: "Welcome to My Portfolio",
-                explore: "Explore my journey, achievements, and projects.",
-                aboutMe: "About Me",
-                age: "Age: 15",
-                school: "School: BIL",
-                achievementsTitle: "My Achievements",
-                achievements: [
-                    "Finalist of the Wharton Global High School Investment Competition",
-                    "Prize-winner of regional mathematics and economics olympiads",
-                    "Founder of a football merchandise store",
-                    "Participant in the Kaplan-Birmingham University Olympiad",
-                    "Participant in the Campus Entrepreneurship Summer Program"
-                ]
-            },
-            ru: {
-                welcome: "Добро пожаловать в мое портфолио",
-                explore: "Исследуйте мой путь, достижения и проекты.",
-                aboutMe: "Обо мне",
-                age: "Возраст: 15",
-                school: "Школа: BIL",
-                achievementsTitle: "Мои достижения",
-                achievements: [
-                    "Финалист конкурса инвестиций Wharton Global High School",
-                    "Призер региональных олимпиад по математике и экономике",
-                    "Основатель магазина футбольной атрибутики",
-                    "Участник олимпиады Kaplan-Birmingham University",
-                    "Участник летней программы предпринимательства Campus"
-                ]
-            }
-        };
-
         function changeLanguage(lang) {
-            document.getElementById("welcome").innerText = translations[lang].welcome;
-            document.getElementById("explore").innerText = translations[lang].explore;
-            document.getElementById("aboutMe").innerText = translations[lang].aboutMe;
-            document.getElementById("age").innerText = translations[lang].age;
-            document.getElementById("school").innerText = translations[lang].school;
-            document.getElementById("achievementsTitle").innerText = translations[lang].achievementsTitle;
-            let achievementList = document.getElementById("achievementsList").children;
-            translations[lang].achievements.forEach((text, index) => {
-                achievementList[index].innerText = text;
-            });
+            const texts = {
+                'en': {
+                    'welcome': 'Welcome to My Portfolio',
+                    'about': 'About Me',
+                    'age': 'Age: 17',
+                    'school': 'School: BIL',
+                    'essay': "I am an aspiring trader and entrepreneur with a passion for finance, business, and innovation. I have participated in prestigious competitions like the Wharton Global High School Investment Competition and regional Olympiads in mathematics and economics. My goal is to apply to top universities and further develop my career in trading and entrepreneurship.",
+                    'achievements': 'My Achievements',
+                    'contact': 'Contact me:'
+                },
+                'ru': {
+                    'welcome': 'Добро пожаловать в мое портфолио',
+                    'about': 'Обо мне',
+                    'age': 'Возраст: 17',
+                    'school': 'Школа: BIL',
+                    'essay': "Я начинающий трейдер и предприниматель с увлечением финансами, бизнесом и инновациями. Участвовал в престижных соревнованиях, таких как Wharton Global High School Investment Competition, а также в региональных олимпиадах по математике и экономике. Моя цель - поступить в ведущие университеты и развивать свою карьеру в трейдинге и предпринимательстве.",
+                    'achievements': 'Мои достижения',
+                    'contact': 'Свяжитесь со мной:'
+                }
+            };
+            document.getElementById('welcome').innerText = texts[lang]['welcome'];
+            document.getElementById('about').innerText = texts[lang]['about'];
+            document.getElementById('age').innerText = texts[lang]['age'];
+            document.getElementById('school').innerText = texts[lang]['school'];
+            document.getElementById('essay').innerText = texts[lang]['essay'];
+            document.getElementById('achievements').innerText = texts[lang]['achievements'];
+            document.getElementById('contact').innerText = texts[lang]['contact'];
         }
     </script>
 </head>
 <body>
-    <section class="welcome" style="margin-top: 50px;">
-        <h1 id="welcome" style="font-size: 3rem; animation: fadeIn 2s ease-in-out;">Welcome to My Portfolio</h1>
-        <p id="explore" style="font-size: 1.5rem; animation: fadeIn 2.5s ease-in-out;">Explore my journey, achievements, and projects.</p>
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('ru')">Русский</button>
-    </section>
-
     <header>
-        <h1>Nurislam Suleimen</h1>
-        <p>Trader, Entrepreneur, Olympiad Participant</p>
+        <h1 id="welcome">Welcome to My Portfolio</h1>
+        <button class="lang-btn" onclick="changeLanguage('en')">English</button>
+        <button class="lang-btn" onclick="changeLanguage('ru')">Русский</button>
         <nav>
+            <a href="index.html">Home</a> | <a href="portfolio.html">Portfolio</a>
         </nav>
     </header>
     <section class="about">
         <img src="/mnt/data/A_realistic_digital_portrait_of_a_young_man_with_s.png" alt="Nurislam Suleimen">
-        <h2 id="aboutMe">About Me</h2>
+        <h2 id="about">About Me</h2>
         <p id="age">Age: 17</p>
         <p id="school">School: BIL</p>
+        <p id="essay">I am an aspiring trader and entrepreneur...</p>
     </section>
     <section class="achievements">
-        <h2 id="achievementsTitle">My Achievements</h2>
-        <ul id="achievementsList">
+        <h2 id="achievements">My Achievements</h2>
+        <ul>
             <li>Finalist of the Wharton Global High School Investment Competition</li>
             <li>Prize-winner of regional mathematics and economics olympiads</li>
             <li>Founder of a football merchandise store</li>
@@ -148,7 +145,7 @@
         </ul>
     </section>
     <footer>
-        <p>Contact me: <a href="https://instagram.com/nuris76427">Instagram</a> | <a href="mailto:nurislam@example.com">Email</a></p>
+        <p id="contact">Contact me: <a href="https://instagram.com/nuris76427">Instagram</a> | <a href="mailto:nurislam@example.com">Email</a></p>
     </footer>
 </body>
 </html>
